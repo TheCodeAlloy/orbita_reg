@@ -296,7 +296,50 @@
       font-size: 0.78rem; color: var(--gray);
     }
 
-    @media (max-width: 600px) {
+    /* ── SUCCESS SCREEN ── */
+    .success-screen {
+      display: none;
+      animation: fadeIn 0.4s ease;
+    }
+    .success-header {
+      background: var(--green);
+      color: #fff;
+      border-radius: 10px;
+      padding: 22px 28px;
+      margin-bottom: 24px;
+    }
+    .success-header h2 {
+      font-size: 1.15rem; font-weight: 700; margin-bottom: 6px;
+    }
+    .success-header p { font-size: 0.9rem; opacity: 0.9; line-height: 1.55; }
+    .success-list { margin-bottom: 28px; }
+    .success-item {
+      background: var(--green-l);
+      border: 1px solid #a8d5b8;
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 10px;
+      font-size: 0.88rem;
+    }
+    .success-item strong { color: var(--green); font-size: 0.95rem; }
+    .success-item .si-row {
+      display: flex; gap: 8px; margin-top: 5px; flex-wrap: wrap;
+      color: var(--gray); font-size: 0.82rem;
+    }
+    .success-close {
+      text-align: center;
+      padding: 24px 0 8px;
+      border-top: 1px solid var(--border);
+    }
+    .success-close .close-msg {
+      font-size: 1.25rem; font-weight: 700;
+      color: var(--navy); letter-spacing: 0.01em;
+    }
+    .success-close .close-sub {
+      font-size: 0.82rem; color: var(--gray); margin-top: 6px;
+    }
+
+    
       .card { padding: 22px 18px; }
       .site-header { padding: 22px 20px; }
       .queue-table th, .queue-table td { padding: 8px 7px; }
@@ -419,6 +462,20 @@
     <!-- Alerts -->
     <div class="alert alert-ok" id="alert-ok"></div>
     <div class="alert alert-err" id="alert-err"></div>
+
+    <!-- SUCCESS SCREEN – zobrazí sa po úspešnom odoslaní -->
+    <div class="success-screen" id="success-screen">
+      <div class="success-header">
+        <h2>✅ Údaje boli úspešne odovzdané</h2>
+        <p>Potvrdzujeme, že Vami zadané údaje boli odovzdané na spracovanie.<br>
+           O spracovaní budete informovaní e-mailom.</p>
+      </div>
+      <div class="success-list" id="success-list"></div>
+      <div class="success-close">
+        <div class="close-msg">Teraz môžete toto okno zatvoriť.</div>
+        <div class="close-sub">Potvrdenie bolo zaslané na e-mail sektorového špecialistu.</div>
+      </div>
+    </div>
 
   </div><!-- /card -->
 
@@ -552,7 +609,38 @@
     document.querySelectorAll('.err').forEach(el => el.classList.remove('err'));
   }
 
-  // ─── Odoslanie všetkého ───────────────────────────────
+  // ─── Zobrazenie stránky úspechu ──────────────────────
+  function showSuccessScreen(submittedQueue) {
+    // Skryť formulár aj kartu
+    document.getElementById('form-fields').style.display = 'none';
+    document.getElementById('alert-ok').style.display = 'none';
+    document.getElementById('alert-err').style.display = 'none';
+
+    // Vytvoriť zoznam odoslaných ZAM
+    const list = document.getElementById('success-list');
+    list.innerHTML = submittedQueue.map((e, i) => {
+      const sekcie = e.skryteSekce || 'žiadne';
+      const kod    = e.sendCode === 'ihned' ? 'Odoslať ihneď' : 'Odoslať neskôr';
+      return `
+        <div class="success-item">
+          <strong>${i + 1}. ${esc(e.nazov)}</strong>
+          <div class="si-row">
+            <span>IČO: <b>${esc(e.ico)}</b></span>
+            <span>·</span>
+            <span>Sektor: <b>${esc(e.sektor)}</b></span>
+            <span>·</span>
+            <span>E-mail: <b>${esc(e.email)}</b></span>
+            <span>·</span>
+            <span>Prístupové údaje: <b>${esc(kod)}</b></span>
+            ${sekcie !== 'žiadne' ? `<span>·</span><span>Skryté sekcie: <b>${esc(sekcie)}</b></span>` : ''}
+          </div>
+        </div>`;
+    }).join('');
+
+    document.getElementById('success-screen').style.display = 'block';
+  }
+
+  
   async function submitAll() {
     if (queue.length === 0) return;
 
@@ -577,16 +665,12 @@
       const result = await res.json();
 
       if (result.success) {
-        const n = queue.length;
-        const suffix = n === 1 ? 'zamestnávateľa bol' : 'zamestnávateľov boli';
-        ok.innerHTML = `✅ Údaje ${n}&nbsp;${suffix} úspešne odoslané.<br>
-          Potvrdzujúci e-mail bol zaslaný sektorovému špecialistovi.<br>
-          Notifikácia bola odoslaná na info@c1z.cz.`;
-        ok.style.display = 'block';
+        // Zobraziť stránku úspechu so zoznamom odoslaných ZAM
+        showSuccessScreen(queue);
         queue = [];
         clearForm();
         document.getElementById('queue-section').style.display = 'none';
-        setFormVisible(true);
+        document.getElementById('decision-panel').style.display = 'none';
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
         throw new Error(result.error || 'Neznáma chyba servera');
