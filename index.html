@@ -24,203 +24,160 @@
       --text:    #1a2535;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'IBM Plex Sans', sans-serif;
-      background: var(--bg); color: var(--text);
-      min-height: 100vh; padding: 32px 16px 64px;
-    }
+    body { font-family: 'IBM Plex Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; padding: 32px 16px 64px; }
     .wrap { max-width: 820px; margin: 0 auto; }
 
     /* HEADER */
-    .site-header {
-      background: var(--navy); border-radius: 12px 12px 0 0;
-      padding: 28px 36px; position: relative; overflow: hidden;
-    }
-    .site-header::before {
-      content: ''; position: absolute; inset: 0;
-      background: repeating-linear-gradient(-45deg,rgba(255,255,255,0.03) 0px,rgba(255,255,255,0.03) 1px,transparent 1px,transparent 12px);
-    }
+    .site-header { background: var(--navy); border-radius: 12px 12px 0 0; padding: 28px 36px; position: relative; overflow: hidden; }
+    .site-header::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(-45deg,rgba(255,255,255,0.03) 0px,rgba(255,255,255,0.03) 1px,transparent 1px,transparent 12px); }
     .site-header h1 { font-size: 1.45rem; font-weight: 700; color: #fff; letter-spacing: 0.01em; position: relative; }
-    .site-header .badge {
-      display: inline-block; background: var(--gold); color: #fff;
-      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
-      padding: 3px 9px; border-radius: 4px; margin-bottom: 10px; position: relative;
-    }
+    .site-header .badge { display: inline-block; background: var(--gold); color: #fff; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 9px; border-radius: 4px; margin-bottom: 10px; position: relative; }
     .site-header p { color: rgba(255,255,255,0.65); font-size: 0.88rem; margin-top: 6px; position: relative; }
 
     /* CARD */
-    .card {
-      background: var(--white); border: 1px solid var(--border); border-top: none;
-      border-radius: 0 0 12px 12px; padding: 36px;
-      box-shadow: 0 4px 24px rgba(15,45,82,0.08);
-    }
+    .card { background: var(--white); border: 1px solid var(--border); border-top: none; border-radius: 0 0 12px 12px; padding: 36px; box-shadow: 0 4px 24px rgba(15,45,82,0.08); }
 
     /* SECTION TITLE */
-    .sec-title {
-      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 22px; padding-bottom: 10px; border-bottom: 1px solid var(--border);
-    }
+    .sec-title { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 22px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
 
     /* FIELDS */
     .field { margin-bottom: 22px; }
     .field > label { display: block; font-weight: 600; font-size: 0.92rem; margin-bottom: 4px; color: var(--text); }
     .hint { font-size: 0.8rem; color: var(--gray); margin-bottom: 7px; line-height: 1.55; }
-
-    input[type="text"], input[type="email"], select {
+    input[type="text"], input[type="email"], input[type="number"], select {
       width: 100%; padding: 10px 13px; border: 1.5px solid var(--border); border-radius: 7px;
       font-family: inherit; font-size: 0.93rem; color: var(--text); background: var(--white);
       transition: border-color 0.18s, box-shadow 0.18s; outline: none; appearance: none;
     }
-    input[type="text"]:focus, input[type="email"]:focus, select:focus {
-      border-color: var(--navy-2); box-shadow: 0 0 0 3px rgba(26,66,117,0.12);
-    }
+    input:focus, select:focus { border-color: var(--navy-2); box-shadow: 0 0 0 3px rgba(26,66,117,0.12); }
     input.err, select.err { border-color: var(--red); box-shadow: 0 0 0 3px rgba(192,57,43,0.1); }
     .err-msg { color: var(--red); font-size: 0.8rem; margin-top: 5px; display: none; }
     #ico { font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.08em; }
+    #otp-code { font-family: 'IBM Plex Mono', monospace; letter-spacing: 0.2em; font-size: 1.3rem; text-align: center; }
     .select-wrap { position: relative; }
-    .select-wrap::after {
-      content: '▾'; position: absolute; right: 13px; top: 50%; transform: translateY(-50%);
-      color: var(--gray); pointer-events: none; font-size: 1rem;
-    }
+    .select-wrap::after { content: '▾'; position: absolute; right: 13px; top: 50%; transform: translateY(-50%); color: var(--gray); pointer-events: none; }
     .select-wrap select { padding-right: 34px; }
 
     /* CHECKBOXES / RADIOS */
     .chk-group, .radio-group { display: flex; flex-direction: column; gap: 10px; }
-    .chk-group label, .radio-group label {
-      display: flex; align-items: flex-start; gap: 10px;
-      font-weight: 400; cursor: pointer; font-size: 0.92rem; color: var(--text);
-    }
-    .chk-group input[type="checkbox"], .radio-group input[type="radio"] {
-      width: 17px; height: 17px; margin-top: 2px; flex-shrink: 0; cursor: pointer; accent-color: var(--navy);
-    }
+    .chk-group label, .radio-group label { display: flex; align-items: flex-start; gap: 10px; font-weight: 400; cursor: pointer; font-size: 0.92rem; color: var(--text); }
+    .chk-group input[type="checkbox"], .radio-group input[type="radio"] { width: 17px; height: 17px; margin-top: 2px; flex-shrink: 0; cursor: pointer; accent-color: var(--navy); }
 
     /* BUTTONS */
-    .btn {
-      padding: 10px 22px; border: none; border-radius: 7px;
-      font-family: inherit; font-size: 0.9rem; font-weight: 600;
-      cursor: pointer; transition: all 0.18s; outline: none;
-    }
+    .btn { padding: 10px 22px; border: none; border-radius: 7px; font-family: inherit; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: all 0.18s; outline: none; }
     .btn-navy  { background: var(--navy); color: #fff; }
     .btn-navy:hover  { background: var(--navy-2); transform: translateY(-1px); }
     .btn-green { background: var(--green); color: #fff; padding: 12px 28px; font-size: 0.95rem; }
     .btn-green:hover:not(:disabled) { background: #175e35; transform: translateY(-1px); }
     .btn-green:disabled { opacity: 0.55; cursor: not-allowed; }
-    .btn-outline {
-      background: transparent; color: var(--gray); border: 1.5px solid var(--border);
-    }
+    .btn-outline { background: transparent; color: var(--gray); border: 1.5px solid var(--border); }
     .btn-outline:hover { background: var(--bg); }
-    .btn-red-sm {
-      background: transparent; color: var(--red);
-      border: 1px solid rgba(192,57,43,0.35);
-      padding: 5px 11px; font-size: 0.78rem; border-radius: 5px;
-    }
+    .btn-red-sm { background: transparent; color: var(--red); border: 1px solid rgba(192,57,43,0.35); padding: 5px 11px; font-size: 0.78rem; border-radius: 5px; }
     .btn-red-sm:hover { background: var(--red-l); }
-    .btn-blue-sm {
-      background: transparent; color: var(--navy);
-      border: 1px solid rgba(15,45,82,0.3);
-      padding: 5px 11px; font-size: 0.78rem; border-radius: 5px;
-    }
+    .btn-blue-sm { background: transparent; color: var(--navy); border: 1px solid rgba(15,45,82,0.3); padding: 5px 11px; font-size: 0.78rem; border-radius: 5px; }
     .btn-blue-sm:hover { background: var(--navy-3); }
-
     .btn-row { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
 
     /* DIVIDER */
-    .divider { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+    .divider { border: none; border-top: 1px solid var(--border); margin: 28px 0; }
 
     /* ANIMATIONS */
     @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
     .fadein { animation: fadeIn 0.3s ease; }
-
-    /* SPINNER */
-    .spinner {
-      width: 20px; height: 20px; border: 3px solid var(--border); border-top-color: var(--navy);
-      border-radius: 50%; animation: spin 0.8s linear infinite; display: none;
-    }
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    /* TABLE (kontrolný zoznam) */
+    /* SPINNER */
+    .spinner { width: 20px; height: 20px; border: 3px solid var(--border); border-top-color: var(--navy); border-radius: 50%; animation: spin 0.8s linear infinite; display: none; }
+
+    /* OTP SCREENS */
+    .otp-box { max-width: 440px; margin: 0 auto; text-align: center; padding: 12px 0; }
+    .otp-box h2 { font-size: 1.1rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+    .otp-box p  { font-size: 0.88rem; color: var(--gray); margin-bottom: 24px; line-height: 1.6; }
+    .otp-box input { text-align: center; }
+    .otp-highlight { background: var(--navy-3); border-radius: 8px; padding: 10px 16px; font-size: 0.84rem; color: var(--navy); margin-bottom: 18px; }
+    .resend-link { font-size: 0.8rem; color: var(--navy); cursor: pointer; text-decoration: underline; margin-top: 14px; display: inline-block; }
+
+    /* ALERTS */
+    .alert { padding: 13px 16px; border-radius: 8px; font-size: 0.87rem; line-height: 1.55; margin-top: 16px; display: none; }
+    .alert-err { background: var(--red-l); border-left: 4px solid var(--red); color: #922b21; }
+    .alert-ok  { background: var(--green-l); border-left: 4px solid var(--green); color: #145e33; }
+
+    /* REVIEW TABLE */
+    .review-note { background: var(--navy-3); border-left: 4px solid var(--navy-2); border-radius: 6px; padding: 13px 16px; font-size: 0.86rem; color: var(--navy); margin-bottom: 20px; line-height: 1.55; }
     .review-table { width: 100%; border-collapse: collapse; font-size: 0.84rem; }
-    .review-table th {
-      background: var(--navy-3); color: var(--navy); padding: 9px 11px; text-align: left;
-      font-weight: 600; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em;
-    }
+    .review-table th { background: var(--navy-3); color: var(--navy); padding: 9px 11px; text-align: left; font-weight: 600; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; }
     .review-table th:first-child { border-radius: 7px 0 0 7px; }
     .review-table th:last-child  { border-radius: 0 7px 7px 0; }
-    .review-table td {
-      padding: 10px 11px; border-bottom: 1px solid var(--bg); vertical-align: top;
-    }
+    .review-table td { padding: 10px 11px; border-bottom: 1px solid var(--bg); vertical-align: top; }
     .review-table tr:last-child td { border-bottom: none; }
     .review-table td.mono { font-family: 'IBM Plex Mono', monospace; }
-    .tag {
-      display: inline-block; background: var(--navy-3); color: var(--navy);
-      font-size: 0.72rem; font-weight: 600; padding: 2px 7px; border-radius: 4px; margin: 1px;
-    }
+    .tag { display: inline-block; background: var(--navy-3); color: var(--navy); font-size: 0.72rem; font-weight: 600; padding: 2px 7px; border-radius: 4px; margin: 1px; }
     .tag-gold { background: var(--gold-l); color: #7a5a12; }
+    .review-actions { display: flex; gap: 12px; align-items: center; margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); flex-wrap: wrap; }
 
-    /* REVIEW SCREEN */
-    .review-note {
-      background: var(--navy-3); border-left: 4px solid var(--navy-2);
-      border-radius: 6px; padding: 13px 16px; font-size: 0.86rem;
-      color: var(--navy); margin-bottom: 20px; line-height: 1.55;
-    }
-    .review-actions {
-      display: flex; gap: 12px; align-items: center;
-      margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border);
-      flex-wrap: wrap;
-    }
-
-    /* ALERT */
-    .alert {
-      padding: 14px 18px; border-radius: 8px; font-size: 0.88rem;
-      line-height: 1.55; margin-top: 22px; display: none;
-    }
-    .alert-err { background: var(--red-l); border-left: 4px solid var(--red); color: #922b21; }
-
-    /* SUCCESS SCREEN */
-    .success-header {
-      background: var(--green); color: #fff; border-radius: 10px;
-      padding: 22px 28px; margin-bottom: 24px;
-    }
+    /* SUCCESS */
+    .success-header { background: var(--green); color: #fff; border-radius: 10px; padding: 22px 28px; margin-bottom: 24px; }
     .success-header h2 { font-size: 1.15rem; font-weight: 700; margin-bottom: 6px; }
     .success-header p  { font-size: 0.9rem; opacity: 0.9; line-height: 1.55; }
-    .success-item {
-      background: var(--green-l); border: 1px solid #a8d5b8;
-      border-radius: 8px; padding: 14px 18px; margin-bottom: 10px; font-size: 0.88rem;
-    }
+    .success-item { background: var(--green-l); border: 1px solid #a8d5b8; border-radius: 8px; padding: 14px 18px; margin-bottom: 10px; font-size: 0.88rem; }
     .success-item strong { color: var(--green); font-size: 0.95rem; }
-    .success-item .si-row {
-      display: flex; gap: 8px; margin-top: 5px; flex-wrap: wrap;
-      color: var(--gray); font-size: 0.82rem;
-    }
-    .success-close {
-      text-align: center; padding: 24px 0 8px; border-top: 1px solid var(--border);
-    }
+    .success-item .si-row { display: flex; gap: 8px; margin-top: 5px; flex-wrap: wrap; color: var(--gray); font-size: 0.82rem; }
+    .success-close { text-align: center; padding: 24px 0 8px; border-top: 1px solid var(--border); }
     .success-close .close-msg { font-size: 1.25rem; font-weight: 700; color: var(--navy); }
     .success-close .close-sub { font-size: 0.82rem; color: var(--gray); margin-top: 6px; }
 
-    /* FOOTER */
     .foot { text-align: center; margin-top: 24px; font-size: 0.78rem; color: var(--gray); }
-
-    @media (max-width: 600px) {
-      .card { padding: 22px 18px; }
-      .site-header { padding: 22px 20px; }
-      .review-table th, .review-table td { padding: 8px 7px; }
-    }
+    @media (max-width: 600px) { .card { padding: 22px 18px; } .site-header { padding: 22px 20px; } }
   </style>
 </head>
 <body>
 <div class="wrap">
-
   <header class="site-header">
     <div class="badge">Systém ORBITA REG</div>
     <h1>Zadanie zamestnávateľa</h1>
-    <p>Zadajte údaje jedného alebo viacerých zamestnávateľov a odošlite ich naraz.</p>
+    <p>Systém pre registráciu zamestnávateľov – prístup len pre oprávnených sektorových špecialistov.</p>
   </header>
 
   <div class="card">
 
-    <!-- ══ FORMULÁR ══════════════════════════════════════════ -->
-    <div id="screen-form">
+    <!-- ══ SCREEN 1: ZADANIE E-MAILU ════════════════════════ -->
+    <div id="screen-login" class="fadein">
+      <div class="otp-box">
+        <h2>Prihlásenie do systému ORBITA REG</h2>
+        <p>Zadajte váš e-mail. Na túto adresu vám bude zaslaný jednorazový prístupový kód.</p>
+        <div class="field">
+          <input type="email" id="login-email" placeholder="vas@email.sk" autocomplete="email">
+          <div class="err-msg" id="e-login-email">Zadajte platnú e-mailovú adresu.</div>
+        </div>
+        <div class="alert alert-err" id="alert-login"></div>
+        <div class="btn-row" style="justify-content:center; margin-top:16px;">
+          <button class="btn btn-green" onclick="requestCode()">Odoslať prístupový kód</button>
+          <div class="spinner" id="spinner-login"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ SCREEN 2: ZADANIE KÓDU ═══════════════════════════ -->
+    <div id="screen-code" style="display:none" class="fadein">
+      <div class="otp-box">
+        <h2>Zadajte prístupový kód</h2>
+        <div class="otp-highlight" id="code-sent-to"></div>
+        <p>Skontrolujte svoju e-mailovú schránku. Kód je platný <strong>15 minút</strong>.</p>
+        <div class="field">
+          <input type="text" id="otp-code" maxlength="6" inputmode="numeric" placeholder="000000" autocomplete="one-time-code">
+          <div class="err-msg" id="e-otp-code">Zadajte 6-ciferný kód.</div>
+        </div>
+        <div class="alert alert-err" id="alert-code"></div>
+        <div class="btn-row" style="justify-content:center; margin-top:16px;">
+          <button class="btn btn-green" onclick="verifyCode()">Overiť kód</button>
+          <div class="spinner" id="spinner-code"></div>
+        </div>
+        <span class="resend-link" onclick="backToLogin()">← Späť / Zadať iný e-mail</span>
+      </div>
+    </div>
+
+    <!-- ══ SCREEN 3: FORMULÁR ════════════════════════════════ -->
+    <div id="screen-form" style="display:none" class="fadein">
       <div class="sec-title">Údaje zamestnávateľa</div>
 
       <!-- Názov -->
@@ -243,9 +200,7 @@
       <div class="field">
         <label for="sektor">Číslo sektora *</label>
         <div class="select-wrap">
-          <select id="sektor">
-            <option value="">– Vyberte sektor –</option>
-          </select>
+          <select id="sektor"><option value="">– Vyberte sektor –</option></select>
         </div>
         <div class="err-msg" id="e-sektor">Vyberte číslo sektora.</div>
       </div>
@@ -261,13 +216,17 @@
       <!-- Viditeľné sekcie -->
       <div class="field">
         <label>Viditeľné sekcie</label>
-        <div class="hint">Vyberte sekcie, ku ktorým bude mať zástupca zamestnávateľa prístup – ktoré bude vypĺňať (možno vybrať jednu, viac alebo všetky)</div>
+        <div class="hint">
+          Zaškrtnutý checkbox (✓) znamená, že zástupca zamestnávateľa bude mať prístup k danej sekcii.
+          Kliknutím na checkbox môžete prístup k sekcii odobrať alebo obnoviť.
+          Štandardne sú všetky sekcie prístupné.
+        </div>
         <div class="chk-group">
-          <label><input type="checkbox" name="sekcie" value="A"> A – Tabuľková časť</label>
-          <label><input type="checkbox" name="sekcie" value="P"> P – Piliere P1–P8</label>
-          <label><input type="checkbox" name="sekcie" value="B"> B – Sociálny dialóg – Otázky pre zamestnávateľa</label>
-          <label><input type="checkbox" name="sekcie" value="C"> C – Sociálny dialóg – Otázky pre odborovú organizáciu</label>
-          <label><input type="checkbox" name="sekcie" value="D"> D – Zamestnanci s opatrovateľskými povinnosťami</label>
+          <label><input type="checkbox" name="sekcie" value="A" checked> A – Tabuľková časť</label>
+          <label><input type="checkbox" name="sekcie" value="P" checked> P – Piliere P1–P8</label>
+          <label><input type="checkbox" name="sekcie" value="B" checked> B – Sociálny dialóg – Otázky pre zamestnávateľa</label>
+          <label><input type="checkbox" name="sekcie" value="C" checked> C – Sociálny dialóg – Otázky pre odborovú organizáciu</label>
+          <label><input type="checkbox" name="sekcie" value="D" checked> D – Zamestnanci s opatrovateľskými povinnosťami</label>
         </div>
       </div>
 
@@ -276,7 +235,7 @@
         <label>Kedy odoslať prístupové údaje? *</label>
         <div class="hint">
           Prístupové údaje sa môžu odoslať zástupcovi zamestnávateľa na zadaný e-mail hneď po zadaní, alebo neskôr.
-          Ak chcete prístupové údaje odoslať až neskôr, nezabudnite potom zaslať pokyn k odoslaniu na e-mailovú adresu <strong>info@c1z.cz</strong>.<br>
+          Ak chcete prístupové údaje odoslať až neskôr, nezabudnite potom zaslať pokyn na e-mailovú adresu <strong>info@c1z.cz</strong>.<br>
           <em>V prevažnej väčšine prípadov bude vhodné odoslať prístupové údaje ihneď po ich zadaní.</em>
         </div>
         <div class="radio-group">
@@ -286,55 +245,53 @@
         <div class="err-msg" id="e-sendCode">Vyberte možnosť odoslania.</div>
       </div>
 
-      <!-- Tlačidlá -->
       <hr class="divider">
       <div style="font-size:0.88rem; color:var(--gray); margin-bottom:16px; line-height:1.6;">
         Teraz môžete zadané údaje odoslať ku spracovaniu, alebo pokračovať v zadávaní
         – či už pre ďalšieho zástupcu toho istého zamestnávateľa, alebo pre iného zamestnávateľa.
       </div>
-      <div class="btn-row">
+
+      <!-- Tlačidlá – normálny režim -->
+      <div id="btns-normal" class="btn-row">
         <button class="btn btn-navy" onclick="handleBtn('next')">Zadať ďalšie údaje</button>
         <button class="btn btn-green" onclick="handleBtn('review')">Skontrolovať a odoslať</button>
       </div>
+
+      <!-- Tlačidlá – režim úpravy -->
+      <div id="btns-edit" class="btn-row" style="display:none">
+        <button class="btn btn-outline" onclick="cancelEdit()">Pokračovať bez zmien</button>
+        <button class="btn btn-green" onclick="confirmEdit()">Potvrdiť zmeny</button>
+      </div>
     </div>
 
-    <!-- ══ KONTROLNÁ OBRAZOVKA ═══════════════════════════════ -->
+    <!-- ══ SCREEN 4: KONTROLA ════════════════════════════════ -->
     <div id="screen-review" style="display:none" class="fadein">
       <div class="sec-title">Kontrola zadaných údajov</div>
       <div class="review-note">
-        Skontrolujte zadané údaje. V prípade potreby môžete jednotlivé záznamy upraviť alebo odstrániť.
+        Skontrolujte zadané údaje. V prípade potreby môžete jednotlivé záznamy <strong>upraviť</strong> alebo <strong>odstrániť</strong>.
         Po overení kliknite na tlačidlo <strong>Odoslať ku spracovaniu</strong>.
       </div>
-
       <table class="review-table">
         <thead>
           <tr>
-            <th>#</th>
-            <th>Názov / E-mail</th>
-            <th>IČO</th>
-            <th>Sek.</th>
-            <th>Viditeľné sekcie</th>
-            <th>Kód</th>
-            <th></th>
+            <th>#</th><th>Názov / E-mail</th><th>IČO</th><th>Sek.</th>
+            <th>Viditeľné sekcie</th><th>Kód</th><th></th>
           </tr>
         </thead>
         <tbody id="review-body"></tbody>
       </table>
-
       <div class="review-actions">
-        <button class="btn btn-outline" onclick="backToForm()">← Späť na formulár</button>
         <button class="btn btn-green" id="btn-submit" onclick="submitAll()">✉ Odoslať ku spracovaniu</button>
-        <div class="spinner" id="spinner"></div>
+        <div class="spinner" id="spinner-submit"></div>
       </div>
-      <div class="alert alert-err" id="alert-err"></div>
+      <div class="alert alert-err" id="alert-submit"></div>
     </div>
 
-    <!-- ══ SUCCESS SCREEN ════════════════════════════════════ -->
+    <!-- ══ SCREEN 5: ÚSPECH ══════════════════════════════════ -->
     <div id="screen-success" style="display:none" class="fadein">
       <div class="success-header">
         <h2>✅ Údaje boli úspešne odovzdané</h2>
-        <p>Potvrdzujeme, že Vami zadané údaje boli odovzdané na spracovanie.<br>
-           O spracovaní budete informovaní e-mailom.</p>
+        <p>Potvrdzujeme, že Vami zadané údaje boli odovzdané na spracovanie.<br>O spracovaní budete informovaní e-mailom.</p>
       </div>
       <div id="success-list"></div>
       <div class="success-close">
@@ -348,10 +305,12 @@
 </div>
 
 <script>
+  // ⚠️ URL Google Apps Script
   const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbztlMABFDTy3y923mqXyVcVtGb0NIpUfVDIbsi0PEgBDOYnDqUsNJ6NyAFc9mc48V0g/exec';
 
-  let queue = [];
-  let editIndex = null; // index záznamu ktorý sa práve upravuje
+  let queue      = [];
+  let editIndex  = null;
+  let loginEmail = '';
 
   // ── Init ────────────────────────────────────────────────────
   document.addEventListener('DOMContentLoaded', () => {
@@ -363,21 +322,114 @@
     document.getElementById('ico').addEventListener('input', e => {
       e.target.value = e.target.value.replace(/\D/g, '');
     });
+    document.getElementById('otp-code').addEventListener('input', e => {
+      e.target.value = e.target.value.replace(/\D/g, '');
+    });
   });
 
-  // ── Pomocné funkcie ─────────────────────────────────────────
-  function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-  function showErr(id) { document.getElementById(id).style.display = 'block'; }
-  function markErr(id) { document.getElementById(id).classList.add('err'); }
-
+  // ── Navigácia medzi obrazovkami ─────────────────────────────
   function showScreen(name) {
-    ['form','review','success'].forEach(s => {
+    ['login','code','form','review','success'].forEach(s => {
       document.getElementById('screen-' + s).style.display = s === name ? '' : 'none';
     });
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  // ── Získanie dát z formulára ────────────────────────────────
+  // ── Pomocné funkcie ─────────────────────────────────────────
+  function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  function showErr(id, msg) {
+    const el = document.getElementById(id);
+    if (msg) el.textContent = msg;
+    el.style.display = 'block';
+  }
+  function hideErr(id) { document.getElementById(id).style.display = 'none'; }
+  function markErrField(id) { document.getElementById(id).classList.add('err'); }
+  function clearErrField(id) { document.getElementById(id).classList.remove('err'); }
+
+  // ══ OTP – PRIHLÁSENIE ═══════════════════════════════════════
+
+  async function requestCode() {
+    const emailEl  = document.getElementById('login-email');
+    const alertEl  = document.getElementById('alert-login');
+    const spin     = document.getElementById('spinner-login');
+    const email    = emailEl.value.trim();
+
+    hideErr('e-login-email'); alertEl.style.display = 'none'; clearErrField('login-email');
+
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      showErr('e-login-email'); markErrField('login-email'); return;
+    }
+
+    spin.style.display = 'block';
+    try {
+      const body = new URLSearchParams({ action: 'requestCode', email });
+      const res  = await fetch(APPS_SCRIPT_URL, { method: 'POST', body, redirect: 'follow' });
+      const data = await res.json();
+
+      if (data.success) {
+        loginEmail = email;
+        document.getElementById('code-sent-to').textContent =
+          'Kód bol odoslaný na adresu: ' + email;
+        showScreen('code');
+      } else if (data.error === 'not_registered') {
+        alertEl.innerHTML = 'Váš e-mail nie je registrovaný v systéme ORBITA REG.<br>V prípade problémov kontaktujte <strong>info@c1z.cz</strong> alebo zavolajte na <strong>+420 776 211 677</strong>.';
+        alertEl.style.display = 'block';
+      } else {
+        alertEl.textContent = 'Nastala chyba. Skúste to prosím znova.';
+        alertEl.style.display = 'block';
+      }
+    } catch {
+      document.getElementById('alert-login').textContent = 'Chyba spojenia. Skúste to prosím znova.';
+      document.getElementById('alert-login').style.display = 'block';
+    } finally {
+      spin.style.display = 'none';
+    }
+  }
+
+  async function verifyCode() {
+    const codeEl  = document.getElementById('otp-code');
+    const alertEl = document.getElementById('alert-code');
+    const spin    = document.getElementById('spinner-code');
+    const code    = codeEl.value.trim();
+
+    hideErr('e-otp-code'); alertEl.style.display = 'none'; clearErrField('otp-code');
+
+    if (!/^\d{6}$/.test(code)) {
+      showErr('e-otp-code'); markErrField('otp-code'); return;
+    }
+
+    spin.style.display = 'block';
+    try {
+      const body = new URLSearchParams({ action: 'verifyCode', email: loginEmail, code });
+      const res  = await fetch(APPS_SCRIPT_URL, { method: 'POST', body, redirect: 'follow' });
+      const data = await res.json();
+
+      if (data.success) {
+        codeEl.value = '';
+        showScreen('form');
+      } else if (data.error === 'expired') {
+        alertEl.innerHTML = 'Platnosť kódu vypršala. Kliknite nižšie a požiadajte o nový kód.';
+        alertEl.style.display = 'block';
+      } else {
+        alertEl.innerHTML = 'Zadali ste nesprávny prístupový kód.<br>V prípade opakovaných problémov kontaktujte <strong>info@c1z.cz</strong> alebo zavolajte na <strong>+420 776 211 677</strong>.';
+        alertEl.style.display = 'block';
+      }
+    } catch {
+      alertEl.textContent = 'Chyba spojenia. Skúste to prosím znova.';
+      alertEl.style.display = 'block';
+    } finally {
+      spin.style.display = 'none';
+    }
+  }
+
+  function backToLogin() {
+    document.getElementById('otp-code').value = '';
+    document.getElementById('alert-code').style.display = 'none';
+    showScreen('login');
+  }
+
+  // ══ FORMULÁR ════════════════════════════════════════════════
+
   function getFormData() {
     return {
       nazov:    document.getElementById('nazov').value.trim(),
@@ -389,140 +441,138 @@
     };
   }
 
-  // ── Validácia ───────────────────────────────────────────────
   function validate(d) {
     let ok = true;
     document.querySelectorAll('.err-msg').forEach(el => el.style.display = 'none');
-    document.querySelectorAll('.err').forEach(el => el.classList.remove('err'));
+    ['nazov','ico','sektor','email'].forEach(id => clearErrField(id));
 
-    if (!d.nazov)                                                  { showErr('e-nazov');    markErr('nazov');  ok = false; }
-    if (!/^\d{8}$/.test(d.ico))                                    { showErr('e-ico');      markErr('ico');    ok = false; }
-    if (!d.sektor)                                                  { showErr('e-sektor');   markErr('sektor'); ok = false; }
-    if (!d.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email))  { showErr('e-email');    markErr('email');  ok = false; }
-    if (!d.sendCode)                                                { showErr('e-sendCode');                   ok = false; }
+    if (!d.nazov)                                                 { showErr('e-nazov');    markErrField('nazov');  ok = false; }
+    if (!/^\d{8}$/.test(d.ico))                                   { showErr('e-ico');      markErrField('ico');    ok = false; }
+    if (!d.sektor)                                                 { showErr('e-sektor');   markErrField('sektor'); ok = false; }
+    if (!d.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email)) { showErr('e-email');    markErrField('email');  ok = false; }
+    if (!d.sendCode)                                               { showErr('e-sendCode');                         ok = false; }
     return ok;
   }
 
-  // ── Vymazanie formulára ─────────────────────────────────────
   function clearForm() {
     ['nazov','ico','email'].forEach(id => document.getElementById(id).value = '');
     document.getElementById('sektor').value = '';
-    document.querySelectorAll('[name="sekcie"]').forEach(c => c.checked = false);
+    document.querySelectorAll('[name="sekcie"]').forEach(c => c.checked = true); // reset na všetky zaškrtnuté
     document.querySelectorAll('[name="sendCode"]').forEach(r => r.checked = false);
-    document.querySelectorAll('.err-msg').forEach(el => el.style.display = 'none');
-    document.querySelectorAll('.err').forEach(el => el.classList.remove('err'));
-    editIndex = null;
+    document.querySelectorAll('#screen-form .err-msg').forEach(el => el.style.display = 'none');
+    ['nazov','ico','sektor','email'].forEach(id => clearErrField(id));
   }
 
-  // ── Naplnenie formulára (pri úprave) ────────────────────────
   function fillForm(d) {
     document.getElementById('nazov').value  = d.nazov;
     document.getElementById('ico').value    = d.ico;
     document.getElementById('sektor').value = d.sektor;
     document.getElementById('email').value  = d.email;
     document.querySelectorAll('[name="sekcie"]').forEach(c => {
-      c.checked = d.sekcie.split(', ').includes(c.value);
+      c.checked = d.sekcie ? d.sekcie.split(', ').includes(c.value) : true;
     });
     document.querySelectorAll('[name="sendCode"]').forEach(r => {
       r.checked = r.value === d.sendCode;
     });
   }
 
-  // ── Klik na tlačidlo (Zadať ďalšie / Skontrolovať) ─────────
+  function setEditMode(active) {
+    document.getElementById('btns-normal').style.display = active ? 'none' : '';
+    document.getElementById('btns-edit').style.display   = active ? ''     : 'none';
+  }
+
+  // ── Klik na tlačidlo Zadať ďalšie / Skontrolovať ───────────
   function handleBtn(action) {
     const d = getFormData();
     if (!validate(d)) return;
-
-    if (editIndex !== null) {
-      queue[editIndex] = d; // prepísať upravený záznam
-    } else {
-      queue.push(d);
-    }
-
+    queue.push(d);
     clearForm();
-
     if (action === 'next') {
-      // Zostať na formulári, pokračovať
       showScreen('form');
     } else {
-      // Zobraziť kontrolnú obrazovku
       renderReview();
       showScreen('review');
     }
   }
 
-  // ── Renderovanie kontrolnej obrazovky ──────────────────────
+  // ── Úprava záznamu ──────────────────────────────────────────
+  function editRecord(i) {
+    editIndex = i;
+    fillForm(queue[i]);
+    setEditMode(true);
+    showScreen('form');
+  }
+
+  function confirmEdit() {
+    const d = getFormData();
+    if (!validate(d)) return;
+    queue[editIndex] = d;
+    editIndex = null;
+    clearForm();
+    setEditMode(false);
+    renderReview();
+    showScreen('review');
+  }
+
+  function cancelEdit() {
+    editIndex = null;
+    clearForm();
+    setEditMode(false);
+    renderReview();
+    showScreen('review');
+  }
+
+  // ── Odstránenie záznamu ─────────────────────────────────────
+  function deleteRecord(i) {
+    const nazov = queue[i].nazov;
+    if (!confirm(`Naozaj chcete odstrániť tento záznam?\n\n„${nazov}"`)) return;
+    queue.splice(i, 1);
+    if (queue.length === 0) {
+      showScreen('form');
+    } else {
+      renderReview();
+    }
+  }
+
+  // ── Vykreslenie kontrolnej obrazovky ───────────────────────
   function renderReview() {
-    const body = document.getElementById('review-body');
-    body.innerHTML = queue.map((e, i) => {
+    document.getElementById('review-body').innerHTML = queue.map((e, i) => {
       const sek = e.sekcie
         ? e.sekcie.split(', ').map(s => `<span class="tag">${esc(s)}</span>`).join(' ')
         : '<span style="color:#999">–</span>';
       const kod = e.sendCode === 'ihned'
         ? '<span class="tag tag-gold">Ihneď</span>'
         : '<span class="tag tag-gold">Neskôr</span>';
-      return `
-        <tr>
-          <td>${i + 1}</td>
-          <td><strong>${esc(e.nazov)}</strong><br>
-              <span style="font-size:.78rem;color:var(--gray)">${esc(e.email)}</span></td>
-          <td class="mono">${esc(e.ico)}</td>
-          <td style="text-align:center">${esc(e.sektor)}</td>
-          <td>${sek}</td>
-          <td>${kod}</td>
-          <td style="white-space:nowrap">
-            <button class="btn-blue-sm" onclick="editRecord(${i})">Upraviť</button>&nbsp;
-            <button class="btn-red-sm"  onclick="deleteRecord(${i})">Odstrániť</button>
-          </td>
-        </tr>`;
+      return `<tr>
+        <td>${i+1}</td>
+        <td><strong>${esc(e.nazov)}</strong><br><span style="font-size:.78rem;color:var(--gray)">${esc(e.email)}</span></td>
+        <td class="mono">${esc(e.ico)}</td>
+        <td style="text-align:center">${esc(e.sektor)}</td>
+        <td>${sek}</td>
+        <td>${kod}</td>
+        <td style="white-space:nowrap">
+          <button class="btn-blue-sm" onclick="editRecord(${i})">Upraviť</button>&nbsp;
+          <button class="btn-red-sm"  onclick="deleteRecord(${i})">Odstrániť</button>
+        </td>
+      </tr>`;
     }).join('');
-  }
-
-  // ── Upraviť záznam ──────────────────────────────────────────
-  function editRecord(i) {
-    editIndex = i;
-    fillForm(queue[i]);
-    showScreen('form');
-  }
-
-  // ── Odstrániť záznam ────────────────────────────────────────
-  function deleteRecord(i) {
-    queue.splice(i, 1);
-    if (queue.length === 0) {
-      // Fronta je prázdna – vrátiť na formulár
-      showScreen('form');
-    } else {
-      renderReview();
-    }
-  }
-
-  // ── Späť na formulár z kontrolnej obrazovky ─────────────────
-  function backToForm() {
-    showScreen('form');
   }
 
   // ── Odoslanie ───────────────────────────────────────────────
   async function submitAll() {
     if (queue.length === 0) return;
-
     const btn  = document.getElementById('btn-submit');
-    const spin = document.getElementById('spinner');
-    const er   = document.getElementById('alert-err');
+    const spin = document.getElementById('spinner-submit');
+    const er   = document.getElementById('alert-submit');
 
-    btn.disabled = true;
-    spin.style.display = 'block';
-    er.style.display = 'none';
+    btn.disabled = true; spin.style.display = 'block'; er.style.display = 'none';
 
-    // Premenujeme kľúč sekcie pre kompatibilitu s Apps Script
-    const payload = queue.map(e => ({ ...e, skryteSekce: e.sekcie }));
+    // Mapovanie pre kompatibilitu s Code.gs (sekcie → viditelneSeckie)
+    const payload = queue.map(e => ({ ...e, viditelneSeckie: e.sekcie }));
 
     try {
       const body = new URLSearchParams({ data: JSON.stringify(payload) });
-      const res  = await fetch(APPS_SCRIPT_URL, {
-        method: 'POST', body,
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        redirect: 'follow'
-      });
+      const res  = await fetch(APPS_SCRIPT_URL, { method: 'POST', body, headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, redirect: 'follow' });
       const result = await res.json();
 
       if (result.success) {
@@ -536,8 +586,7 @@
       er.innerHTML = `❌ Chyba pri odosielaní: <strong>${esc(e.message)}</strong><br>Skúste to znova alebo kontaktujte <strong>info@c1z.cz</strong>.`;
       er.style.display = 'block';
     } finally {
-      btn.disabled = false;
-      spin.style.display = 'none';
+      btn.disabled = false; spin.style.display = 'none';
     }
   }
 
@@ -546,17 +595,16 @@
     document.getElementById('success-list').innerHTML = submitted.map((e, i) => {
       const sekcie = e.sekcie || 'žiadne';
       const kod    = e.sendCode === 'ihned' ? 'Odoslať ihneď' : 'Odoslať neskôr';
-      return `
-        <div class="success-item">
-          <strong>${i + 1}. ${esc(e.nazov)}</strong>
-          <div class="si-row">
-            <span>IČO: <b>${esc(e.ico)}</b></span><span>·</span>
-            <span>Sektor: <b>${esc(e.sektor)}</b></span><span>·</span>
-            <span>E-mail: <b>${esc(e.email)}</b></span><span>·</span>
-            <span>Prístupové údaje: <b>${esc(kod)}</b></span>
-            ${sekcie !== 'žiadne' ? `<span>·</span><span>Viditeľné sekcie: <b>${esc(sekcie)}</b></span>` : ''}
-          </div>
-        </div>`;
+      return `<div class="success-item">
+        <strong>${i+1}. ${esc(e.nazov)}</strong>
+        <div class="si-row">
+          <span>IČO: <b>${esc(e.ico)}</b></span><span>·</span>
+          <span>Sektor: <b>${esc(e.sektor)}</b></span><span>·</span>
+          <span>E-mail: <b>${esc(e.email)}</b></span><span>·</span>
+          <span>Prístupové údaje: <b>${esc(kod)}</b></span>
+          ${sekcie !== 'žiadne' ? `<span>·</span><span>Viditeľné sekcie: <b>${esc(sekcie)}</b></span>` : ''}
+        </div>
+      </div>`;
     }).join('');
   }
 </script>
